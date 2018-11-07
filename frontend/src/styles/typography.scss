@@ -1,0 +1,35 @@
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+label,
+a,
+li {
+  font-family: $f-type;
+  text-shadow: rgba(0, 0, 0, 0.01) 0 0 1px;
+  -webkit-font-smoothing: antialiased !important;
+  color: $c-white;
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  color: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  text-decoration: none;
+}
+
+ol,
+ul {
+  list-style-position: inside;
+  list-style: none;
+}
+
+h2 {
+  font-size: 36px;
+  font-weight: 400;
+}
