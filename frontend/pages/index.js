@@ -6,7 +6,8 @@ import Navigation from "../components/Navigation.js";
 import { Config } from "../config.js";
 import styled from "react-emotion";
 import Link from "next/link";
-import { TweenMax, Power2, TimelineLite } from "gsap";
+import Router from "next/router";
+import { TweenMax, Power2 } from "gsap";
 
 const Introduction = styled("div")`
   height: 100vh;
@@ -14,12 +15,16 @@ const Introduction = styled("div")`
   flex-direction: column;
   justify-content: center;
   padding-left: 11.33%;
+  opacity: 0;
   h2 {
     width: 70%;
     max-width: 770px;
     &:first-child {
-      margin-bottom: 60px;
+      margin-bottom: 43px;
     }
+  }
+  .cta-wrapper {
+    margin-top: 40px;
   }
 `;
 
@@ -32,29 +37,32 @@ class Home extends Component {
   }
   static async getInitialProps(context) {
     const homeRes = await fetch(
-      `${Config.apiUrl}/wp-json/postlight/v1/page?slug=home`
+      `${Config.apiUrl}/wp-json/portfolio/v1/page?slug=home`
     );
     const page = await homeRes.json();
     return page;
   }
 
   componentDidMount() {
-    TweenMax.to("#introduction_copy", 1, {
-      backgroundColor: "#ff0000",
-      width: "50%",
-      top: "100px"
+    TweenMax.to("#introduction_copy", 1.4, {
+      opacity: 1,
+      ease: Expo.easeInOut
     });
   }
 
   render() {
     return (
       <Layout>
-        <Navigation menu={this.props.headerMenu} />
-        <Introduction
-          id="introduction_copy"
-          className="page-container"
-          dangerouslySetInnerHTML={{ __html: this.props.content.rendered }}
-        />
+        <Introduction id="introduction_copy" className="page-container">
+          <div
+            dangerouslySetInnerHTML={{ __html: this.props.content.rendered }}
+          />
+          <div className="cta-wrapper">
+            <Link href="/work">
+              <a className="link--primary">View My Work</a>
+            </Link>
+          </div>
+        </Introduction>
       </Layout>
     );
   }

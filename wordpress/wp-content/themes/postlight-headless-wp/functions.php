@@ -23,3 +23,8 @@ require_once 'inc/acf-options.php';
 
 // Add custom API endpoints
 require_once 'inc/api-routes.php';
+
+// Increase size of upload limit
+@ini_set( 'upload_max_size' , '64M' );
+@ini_set( 'post_max_size', '64M');
+@ini_set( 'max_execution_time', '300' );

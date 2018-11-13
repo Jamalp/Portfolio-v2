@@ -28,12 +28,13 @@ html,
 body {
   height: 100%;
   font-family: $f-type;
+  background-color: $c-black;
 }
 
 body {
   background-color: $c-black;
   text-rendering: optimizeLegibility !important;
-  margin: 0 auto;
+  margin: 0;
   padding: 0;
   border: 0;
   font-size: 100%;

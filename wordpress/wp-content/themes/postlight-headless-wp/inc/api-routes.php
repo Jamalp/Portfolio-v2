@@ -25,7 +25,7 @@ add_action(
         );
 
         // Register routes
-        register_rest_route( 'postlight/v1', '/post', [
+        register_rest_route( 'portfolio/v1', '/post', [
             'methods'  => 'GET',
             'callback' => 'rest_get_post',
             'args' => [
@@ -38,7 +38,7 @@ add_action(
             ],
         ] );
 
-        register_rest_route( 'postlight/v1', '/page', [
+        register_rest_route( 'portfolio/v1', '/page', [
             'methods'  => 'GET',
             'callback' => 'rest_get_page',
             'args' => [
@@ -51,7 +51,33 @@ add_action(
             ],
         ] );
 
-        register_rest_route('postlight/v1', '/post/preview', [
+        register_rest_route( 'portfolio/v1', '/projects', [
+            'methods' => 'GET',
+            'callback' => 'get_all_projects_callback',
+            'args' => [
+                'slug' => array_merge(
+                    $page_slug_arg,
+                    [
+                        'required' => false,
+                    ]
+                ),
+            ],
+        ]);
+
+        register_rest_route( 'portfolio/v1', '/project', [
+            'methods'  => 'GET',
+            'callback' => 'rest_get_project',
+            'args' => [
+                'slug' => array_merge(
+                    $page_slug_arg,
+                    [
+                        'required' => true,
+                    ]
+                ),
+            ],
+        ] );
+
+        register_rest_route('portfolio/v1', '/post/preview', [
             'methods'  => 'GET',
             'callback' => 'rest_get_post_preview',
             'args' => [
@@ -81,6 +107,16 @@ function rest_get_post( WP_REST_Request $request ) {
 }
 
 /**
+ * Respond to a REST API request to get project data.
+ *
+ * @param WP_REST_Request $request Request.
+ * @return WP_REST_Response
+ */
+function rest_get_project( WP_REST_Request $request ) {
+    return rest_get_content( $request, 'project', __FUNCTION__ );
+}
+
+/**
  * Respond to a REST API request to get page data.
  *
  * @param WP_REST_Request $request Request.
@@ -107,6 +143,7 @@ function rest_get_content( WP_REST_Request $request, $type, $function_name ) {
         [
             'post',
             'page',
+            'project',
         ],
         true
     );
@@ -151,6 +188,7 @@ function get_content_by_slug( $slug, $type = 'post' ) {
         [
             'post',
             'page',
+            'project',
         ],
         true
     );
@@ -227,3 +265,39 @@ function rest_get_post_preview( WP_REST_Request $request ) {
     $response = $controller->prepare_response_for_collection( $data );
     return new WP_REST_Response( $response );
 }
+
+function get_all_projects_callback( $request ) {
+    // Initialize the array that will receive the posts' data. 
+    $posts_data = array();
+    // Receive and set the page parameter from the $request for pagination purposes
+    $paged = $request->get_param( 'page' );
+    $paged = ( isset( $paged ) || ! ( empty( $paged ) ) ) ? $paged : 1; 
+    // Get the posts using the 'post' and 'news' post types
+    $posts = get_posts( array(
+            'paged' => $paged,
+            'post__not_in' => get_option( 'sticky_posts' ),
+            'posts_per_page' => 10,            
+            'post_type' => array( 'project' ) // This is the line that allows to fetch multiple post types. 
+        )
+    ); 
+    // Loop through the posts and push the desired data to the array we've initialized earlier in the form of an object
+    foreach( $posts as $post ) {
+        $id = $post->ID; 
+
+        $controller = new WP_REST_Posts_Controller( 'post' );
+        $data = $controller->prepare_item_for_response( $post, $request );
+        $response = $controller->prepare_response_for_collection( $data );
+        $new_data = new WP_REST_Response( $response ); 
+        $posts_data[] = (object) array( 
+            'id' => $id, 
+            'slug' => $post->post_name, 
+            'type' => $post->post_type,
+            'title' => $post->post_title,
+            'order' => $post->menu_order,
+            'field_data' => $new_data
+        );
+    }                 
+
+    
+    return $posts_data;                   
+} 

@@ -4,7 +4,7 @@ import Link from "next/link";
 import fetch from "isomorphic-unfetch";
 import Error from "next/error";
 import PageWrapper from "../components/PageWrapper.js";
-import Menu from "../components/Menu.js";
+import Navigation from "../components/Navigation.js";
 import { Config } from "../config.js";
 
 class Category extends Component {
