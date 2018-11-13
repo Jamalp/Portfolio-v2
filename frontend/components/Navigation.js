@@ -117,7 +117,7 @@ class Navigation extends Component {
     this.anim_header = null;
     this.state = {
       isNavigationOpen: false,
-      header_hide_amount: -window.innerWidth + 120
+      header_hide_amount: null
     };
     this.navigationAnimation = new TimelineLite({
       paused: true,
@@ -131,14 +131,11 @@ class Navigation extends Component {
   }
 
   resize() {
-    const _this = this;
     window.addEventListener(
       "resize",
       () => {
-        // Try using a class
         this.setState({
-          header_hide_amount: -window.innerWidth + 120,
-          isNavigationOpen: false
+          header_hide_amount: -window.innerWidth + 120
         });
       },
       false
@@ -199,7 +196,7 @@ class Navigation extends Component {
     this.anim_header = new TweenMax.fromTo(
       "#header",
       1.3,
-      { transform: `translate3d(${this.state.header_hide_amount}px, 0, 0)` },
+      { transform: `translate3d(calc(-100% + 120px), 0, 0)` },
       { transform: "translate3d(0,0,0)", ease: Expo.easeInOut }
     );
     this.navigationAnimation.add(this.anim_header);

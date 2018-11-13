@@ -1,6 +1,5 @@
 import React from "react";
 import { Config } from "../config.js";
-import Navigation from "./Navigation";
 const PageWrapper = Comp =>
   class extends React.Component {
     state = {

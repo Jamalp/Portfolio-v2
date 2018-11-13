@@ -2,7 +2,6 @@ import Layout from "../components/Layout.js";
 import React, { Component } from "react";
 import fetch from "isomorphic-unfetch";
 import PageWrapper from "../components/PageWrapper.js";
-import Navigation from "../components/Navigation.js";
 import { Config } from "../config.js";
 import styled from "react-emotion";
 import Link from "next/link";
