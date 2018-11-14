@@ -1,7 +1,5 @@
 import React, { Component } from "react";
 import Link from "next/link";
-import mapValues from "lodash.mapvalues";
-import toNumber from "lodash.tonumber";
 import styled from "react-emotion";
 import { vars } from "../emotion/variables";
 
@@ -80,8 +78,6 @@ class Circle extends Component {
     window.addEventListener("resize", this.resize);
     document.addEventListener("mousemove", this.mouseMove);
   }
-
-  resize = () => {};
 
   render() {
     return (

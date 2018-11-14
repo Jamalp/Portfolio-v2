@@ -15,15 +15,34 @@ const Introduction = styled("div")`
   justify-content: center;
   padding-left: 11.33%;
   opacity: 0;
+  width: calc(100% - 240px);
+  margin: 0 auto;
+  @media (max-width: 600px) {
+    padding-left: 30px;
+    padding-right: 30px;
+    height: 100vh;
+    width: 100%;
+  }
   h2 {
     width: 70%;
     max-width: 770px;
     &:first-child {
       margin-bottom: 43px;
+      @media (max-width: 600px) {
+        margin-bottom: 20px;
+      }
+    }
+    @media (max-width: 600px) {
+      width: 100%;
+      font-size: 24px;
     }
   }
   .cta-wrapper {
     margin-top: 40px;
+    @media (max-width: 600px) {
+      font-size: 24px;
+      margin-top: 20px;
+    }
   }
 `;
 
@@ -52,7 +71,7 @@ class Home extends Component {
   render() {
     return (
       <Layout>
-        <Introduction id="introduction_copy" className="page-container">
+        <Introduction id="introduction_copy">
           <div
             dangerouslySetInnerHTML={{ __html: this.props.content.rendered }}
           />

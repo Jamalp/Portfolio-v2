@@ -14,13 +14,13 @@ html {
   outline: none !important;
 }
 ::selection {
-  // background: $blue;
-  // color:$white;
+  background: #ffffff;
+  color: #0a0a0a;
   /* WebKit/Blink Browsers */
 }
 ::-moz-selection {
-  // background: $red;
-  // color:$white;
+  background: #ffffff;
+  color: #0a0a0a;
   /* Gecko Browsers */
 }
 
@@ -98,7 +98,6 @@ em {
   font-style: italic !important;
 }
 
-.page-container {
-  width: calc(100% - 240px);
-  margin: 0 auto;
+.flex {
+  display: flex;
 }

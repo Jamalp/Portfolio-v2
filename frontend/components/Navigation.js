@@ -19,12 +19,27 @@ const Header = styled("header")`
   transform: translate3d(calc(-100% + 120px), 0, 0);
   z-index: 1000;
   /* transition: transform 0.8s cubic-bezier(1, 0.01, 0.7, 0.93); */
+  @media (max-width: 600px) {
+    bottom: auto;
+    right: 0;
+    height: 80px;
+    transform: translate3d(0, 0, 0);
+  }
 
   .navigation-sidebar {
     position: relative;
     padding-top: 100px;
     height: 100%;
     width: 120px;
+    @media (max-width: 600px) {
+      width: 100%;
+      height: 100%;
+      padding-top: 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 30px;
+    }
     #navigation_line {
       width: 1px;
       height: 0;
@@ -33,6 +48,8 @@ const Header = styled("header")`
       opacity: 0;
       background-color: #fff;
       position: absolute;
+      @media (max-width: 600px) {
+      }
     }
   }
   .circle {
@@ -69,6 +86,13 @@ const Header = styled("header")`
     display: flex;
     align-items: center;
     justify-content: center;
+    @media (max-width: 600px) {
+      transform: translate3d(0, 0, 0) rotate(0) !important;
+      height: auto;
+      position: static;
+      width: auto;
+      letter-spacing: 2px;
+    }
   }
 `;
 
@@ -76,6 +100,9 @@ const NavigationInner = styled("div")`
   width: calc(100% - 120px);
   display: flex;
   align-items: center;
+  @media (max-width: 600px) {
+    display: none;
+  }
   .navigation-inner-line {
     width: 10.33%;
     margin-left: 120px;
@@ -227,27 +254,27 @@ class Navigation extends Component {
           <nav>
             <div className="navigation-link-wrapper">
               <Link href="/">
-                <a>Home</a>
+                <a onClick={this.toggleMenu}>Home</a>
               </Link>
             </div>
             <div className="navigation-link-wrapper">
               <Link href="/about">
-                <a>About</a>
+                <a onClick={this.toggleMenu}>About</a>
               </Link>
             </div>
             <div className="navigation-link-wrapper">
               <Link prefetch href="/work">
-                <a>Work</a>
+                <a onClick={this.toggleMenu}>Work</a>
               </Link>
             </div>
             <div className="navigation-link-wrapper">
               <Link href="/contact">
-                <a>Contact</a>
+                <a onClick={this.toggleMenu}>Contact</a>
               </Link>
             </div>
             <div className="navigation-link-wrapper">
               <Link href="/photography">
-                <a>Photography</a>
+                <a onClick={this.toggleMenu}>Photography</a>
               </Link>
             </div>
           </nav>
@@ -257,7 +284,7 @@ class Navigation extends Component {
           <Circle />
           <div className="menu-trigger" onClick={this.toggleMenu}>
             <span className="menu-closed">Menu</span>
-            <span className="menu-open">Close</span>
+            {/* <span className="menu-open">Close</span> */}
           </div>
         </div>
       </Header>

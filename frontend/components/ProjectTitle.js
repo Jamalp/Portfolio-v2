@@ -6,18 +6,29 @@ const Title = styled("div")`
   padding-top: 102px;
   margin-left: ${vars.c_left_1};
   margin-right: auto;
+  z-index: 10;
+  position: relative;
+  h1 {
+    font-weight: 700;
+    font-size: 72px;
+    text-align: left;
+    position: absolute;
+  }
   .title-multi-line {
     display: inline-block;
     span {
-      text-align: right;
+      text-align: left;
       display: block;
       font-weight: 700;
       font-size: 72px;
+      &:last-child {
+        transform: translate3d(60px, 0, 0);
+      }
     }
   }
 `;
 
-class PageTitle extends Component {
+class ProjectTitle extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -56,4 +67,4 @@ class PageTitle extends Component {
   }
 }
 
-export default PageTitle;
+export default ProjectTitle;
