@@ -5,6 +5,7 @@ import styled from "react-emotion";
 import { vars } from "../emotion/variables";
 import Circle from "./Circle";
 import throttle from "lodash.throttle";
+import { TweenMax, Power2 } from "gsap";
 
 const Header = styled("header")`
   position: fixed;
