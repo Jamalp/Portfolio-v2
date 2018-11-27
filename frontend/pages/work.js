@@ -11,12 +11,22 @@ import { TweenMax, Power2 } from "gsap";
 const WorkGrid = styled("section")`
   margin-left: 120px;
   margin-top: 78px;
+  @media (max-width: 950px) {
+    margin: 0 auto 30px;
+  }
 `;
 
 const ProjectEl = styled("div")`
   margin-bottom: 110px;
+  @media (max-width: 950px) {
+    margin: 0 auto 20px;
+    padding: 0 30px;
+  }
   &.project-hero {
     width: calc(100% - 120px);
+    @media (max-width: 950px) {
+      width: 100%;
+    }
   }
 
   &.project-row {
@@ -25,18 +35,33 @@ const ProjectEl = styled("div")`
     margin-left: 10.4%;
     justify-content: space-between;
     align-items: center;
+    @media (max-width: 950px) {
+      width: 100%;
+      margin: 0 auto;
+      display: block;
+    }
     & > a {
       width: 48.6%;
+      @media (max-width: 950px) {
+        width: 100%;
+        margin: 0 auto 20px;
+      }
     }
   }
 
   &.project-row-3,
   &.project-row-5 {
     margin-left: 20.650529501%;
+    @media (max-width: 950px) {
+      margin-left: 0;
+    }
   }
 
   &.project-row-5 {
     margin-right: 120px;
+    @media (max-width: 950px) {
+      margin-right: 0;
+    }
   }
 
   .project-link {
@@ -69,6 +94,10 @@ const ProjectEl = styled("div")`
     align-items: flex-end;
     pointer-events: none;
     transition: background-color 0.5s ease;
+    @media (max-width: 950px) {
+      pointer-events: auto;
+      background-color: rgba(0, 0, 0, 0.6);
+    }
     .project-name {
       opacity: 0;
       transition: opacity 0.5s ease;
@@ -80,6 +109,11 @@ const ProjectEl = styled("div")`
       font-size: 36px;
       font-weight: 700;
       letter-spacing: 1px;
+      @media (max-width: 950px) {
+        opacity: 1;
+        margin-left: 20px;
+        margin-bottom: 20px;
+      }
       &:after {
         content: "";
         position: absolute;
@@ -92,6 +126,9 @@ const ProjectEl = styled("div")`
         transform: translate3d(-100%, 0, 0);
         transition: transform 0.5s cubic-bezier(1, 0.01, 0.7, 0.93);
         will-change: transform;
+        @media (max-width: 950px) {
+          transform: translate3d(0, 0, 0);
+        }
       }
     }
   }
@@ -125,7 +162,13 @@ class Work extends Component {
         <PageTitle title={this.state.pageTitle} />
         <WorkGrid className="work-grid">
           <ProjectEl className="project-hero">
-            <Link prefetch href={"/work/" + this.props.projects[0].slug}>
+            <Link
+              prefetch
+              href={`/project?slug=${
+                this.props.projects[0].slug
+              }&apiRoute=page`}
+              as={`/work/${this.props.projects[0].slug}`}
+            >
               <a className="project-link">
                 <div className="project-hover">
                   <h3 className="project-name">
@@ -144,7 +187,13 @@ class Work extends Component {
             </Link>
           </ProjectEl>
           <ProjectEl className="project-row project-row-2">
-            <Link prefetch href={"/work/" + this.props.projects[1].slug}>
+            <Link
+              prefetch
+              href={`/project?slug=${
+                this.props.projects[1].slug
+              }&apiRoute=page`}
+              as={`/work/${this.props.projects[1].slug}`}
+            >
               <a className="project-link">
                 <div className="project-hover">
                   <h3 className="project-name">
@@ -161,7 +210,13 @@ class Work extends Component {
                 />
               </a>
             </Link>
-            <Link prefetch href={"/work/" + this.props.projects[2].slug}>
+            <Link
+              prefetch
+              href={`/project?slug=${
+                this.props.projects[2].slug
+              }&apiRoute=page`}
+              as={`/work/${this.props.projects[2].slug}`}
+            >
               <a className="project-link">
                 <div className="project-hover">
                   <h3 className="project-name">
@@ -182,7 +237,13 @@ class Work extends Component {
             </Link>
           </ProjectEl>
           <ProjectEl className="project-single project-row-3">
-            <Link prefetch href={"/work/" + this.props.projects[3].slug}>
+            <Link
+              prefetch
+              href={`/project?slug=${
+                this.props.projects[3].slug
+              }&apiRoute=page`}
+              as={`/work/${this.props.projects[3].slug}`}
+            >
               <a className="project-link">
                 <div className="project-hover">
                   <h3 className="project-name">
@@ -201,7 +262,13 @@ class Work extends Component {
             </Link>
           </ProjectEl>
           <ProjectEl className="project-row project-row-4">
-            <Link prefetch href={"/work/" + this.props.projects[4].slug}>
+            <Link
+              prefetch
+              href={`/project?slug=${
+                this.props.projects[4].slug
+              }&apiRoute=page`}
+              as={`/work/${this.props.projects[4].slug}`}
+            >
               <a className="project-link">
                 <div className="project-hover">
                   <h3 className="project-name">
@@ -218,7 +285,13 @@ class Work extends Component {
                 />
               </a>
             </Link>
-            <Link prefetch href={"/work/" + this.props.projects[5].slug}>
+            <Link
+              prefetch
+              href={`/project?slug=${
+                this.props.projects[5].slug
+              }&apiRoute=page`}
+              as={`/work/${this.props.projects[5].slug}`}
+            >
               <a className="project-link">
                 <div className="project-hover">
                   <h3 className="project-name">
@@ -237,7 +310,13 @@ class Work extends Component {
             </Link>
           </ProjectEl>
           <ProjectEl className="project-single project-row-5">
-            <Link prefetch href={"/work/" + this.props.projects[6].slug}>
+            <Link
+              prefetch
+              href={`/project?slug=${
+                this.props.projects[6].slug
+              }&apiRoute=page`}
+              as={`/work/${this.props.projects[6].slug}`}
+            >
               <a className="project-link">
                 <div className="project-hover">
                   <h3 className="project-name">
@@ -256,7 +335,13 @@ class Work extends Component {
             </Link>
           </ProjectEl>
           <ProjectEl className="project-single project-row-6">
-            <Link prefetch href={"/work/" + this.props.projects[7].slug}>
+            <Link
+              prefetch
+              href={`/project?slug=${
+                this.props.projects[7].slug
+              }&apiRoute=page`}
+              as={`/work/${this.props.projects[7].slug}`}
+            >
               <a className="project-link">
                 <div className="project-hover">
                   <h3 className="project-name">

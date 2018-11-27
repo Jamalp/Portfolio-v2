@@ -8,26 +8,46 @@ const ImageWithSidebarWrapper = styled("div")`
   margin-top: 100px;
   margin-left: 120px;
   margin-right: 120px;
+  @media (max-width: 950px) {
+    margin: 0;
+    display: block;
+    padding: 0 30px;
+  }
   .image {
     width: 77.25%;
+    @media (max-width: 950px) {
+      width: 100%;
+    }
   }
   .sidebar {
     width: 20.25%;
     margin-top: 40px;
+    @media (max-width: 950px) {
+      width: 100%;
+      margin-top: 20px;
+    }
     .sidebar-content {
       display: flex;
       align-items: flex-start;
       justify-content: space-between;
       margin-bottom: 40px;
+      @media (max-width: 950px) {
+        margin-bottom: 10px;
+        justify-content: flex-start;
+      }
       .line {
-        height: 2px;
+        height: 1px;
         width: 20px;
         background-color: #fff;
-        margin-top: 7px;
+        margin-top: 9px;
+        @media (max-width: 950px) {
+          margin-top: 12px;
+          margin-right: 10px;
+          width: 10px;
+        }
       }
       p {
         font-size: 18px;
-        font-weight: 700;
         width: 78%;
       }
     }

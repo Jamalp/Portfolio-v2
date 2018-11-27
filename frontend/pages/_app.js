@@ -12,6 +12,11 @@ const Initials = styled("h4")`
   font-weight: 700;
   text-align: center;
   cursor: pointer;
+  @media (max-width: 950px) {
+    display: none;
+    bottom: 22px;
+    right: 30px;
+  }
 
   .i-name-rest,
   .i-contact {
@@ -70,11 +75,11 @@ export default class Portfolio extends App {
         <Component {...pageProps} />
         <Initials className="initials">
           <span className="i-contact">
-            <Link href="/contact">
+            <Link href="mailto:jamalkpowell@gmail.com?Subject=Hey%20Jamal">
               <a>Contact</a>
             </Link>
           </span>
-          <Link href="/contact">
+          <Link href="mailto:jamalkpowell@gmail.com?Subject=Hey%20Jamal">
             <a>
               <span className="i-first-name">
                 <span className="i-first">J</span>

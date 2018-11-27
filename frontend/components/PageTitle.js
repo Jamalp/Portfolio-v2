@@ -4,8 +4,25 @@ import { vars } from "../emotion/variables";
 
 const Title = styled("div")`
   padding-top: 102px;
-  margin-left: ${vars.c_left_1};
+  width: calc(100% - 240px);
   margin-right: auto;
+  padding-left: 9.52%;
+  margin-left: auto;
+  @media (max-width: 950px) {
+    width: 100%;
+    padding-left: 0;
+    padding-top: 98px;
+  }
+
+  h1 {
+    font-weight: 700;
+    font-size: 72px;
+    @media (max-width: 950px) {
+      position: relative;
+      padding-left: 30px;
+      font-size: ${vars.f_title_mobile};
+    }
+  }
   .title-multi-line {
     display: inline-block;
     span {
@@ -13,6 +30,10 @@ const Title = styled("div")`
       display: block;
       font-weight: 700;
       font-size: 72px;
+      @media (max-width: 950px) {
+        text-align: left;
+        font-size: ${vars.f_title_mobile};
+      }
     }
   }
 `;

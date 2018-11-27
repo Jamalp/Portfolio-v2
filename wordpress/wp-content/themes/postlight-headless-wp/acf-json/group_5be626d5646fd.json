@@ -555,6 +555,25 @@
                                     "maxlength": "",
                                     "rows": "",
                                     "new_lines": ""
+                                },
+                                {
+                                    "key": "field_5bf073e791ccc",
+                                    "label": "Gallery Video",
+                                    "name": "gallery_video",
+                                    "type": "file",
+                                    "instructions": "",
+                                    "required": 0,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "return_format": "url",
+                                    "library": "all",
+                                    "min_size": "",
+                                    "max_size": "",
+                                    "mime_types": ""
                                 }
                             ]
                         }
@@ -716,6 +735,75 @@
             "max_height": "",
             "max_size": "",
             "mime_types": ""
+        },
+        {
+            "key": "field_5bf325669afec",
+            "label": "Mobile Images",
+            "name": "mobile_images",
+            "type": "gallery",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "min": "",
+            "max": 3,
+            "insert": "append",
+            "library": "all",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": ""
+        },
+        {
+            "key": "field_5bf36900ae3a6",
+            "label": "Next Project",
+            "name": "next_project",
+            "type": "relationship",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_5be626e495dbc",
+                        "operator": "!=empty"
+                    },
+                    {
+                        "field": "field_5be6273a95dbd",
+                        "operator": "!=empty"
+                    }
+                ],
+                [
+                    {
+                        "field": "field_5be6273a95dbd",
+                        "operator": "!=empty"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "post_type": [],
+            "taxonomy": [],
+            "filters": [
+                "search",
+                "post_type",
+                "taxonomy"
+            ],
+            "elements": [
+                "featured_image"
+            ],
+            "min": "",
+            "max": "",
+            "return_format": "object"
         }
     ],
     "location": [
@@ -735,5 +823,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1542153892
+    "modified": 1542679612
 }

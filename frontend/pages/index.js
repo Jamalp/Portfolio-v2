@@ -13,11 +13,11 @@ const Introduction = styled("div")`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding-left: 11.33%;
+  padding-left: 9.52%;
   opacity: 0;
   width: calc(100% - 240px);
   margin: 0 auto;
-  @media (max-width: 600px) {
+  @media (max-width: 950px) {
     padding-left: 30px;
     padding-right: 30px;
     height: 100vh;
@@ -25,21 +25,21 @@ const Introduction = styled("div")`
   }
   h2 {
     width: 70%;
-    max-width: 770px;
+    max-width: 790px;
     &:first-child {
       margin-bottom: 43px;
-      @media (max-width: 600px) {
+      @media (max-width: 950px) {
         margin-bottom: 20px;
       }
     }
-    @media (max-width: 600px) {
+    @media (max-width: 950px) {
       width: 100%;
       font-size: 24px;
     }
   }
   .cta-wrapper {
     margin-top: 40px;
-    @media (max-width: 600px) {
+    @media (max-width: 950px) {
       font-size: 24px;
       margin-top: 20px;
     }

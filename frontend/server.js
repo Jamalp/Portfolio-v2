@@ -12,7 +12,7 @@ app
 
     server.get("/work/:slug", (req, res) => {
       const actualPage = "/project";
-      const queryParams = { slug: req.params.slug, apiRoute: "project" };
+      const queryParams = { slug: req.params.slug, apiRoute: "page" };
       app.render(req, res, actualPage, queryParams);
     });
 

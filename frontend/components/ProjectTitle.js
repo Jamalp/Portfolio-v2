@@ -8,11 +8,21 @@ const Title = styled("div")`
   margin-right: auto;
   z-index: 10;
   position: relative;
+  @media (max-width: 950px) {
+    padding-top: 40px;
+    margin-left: 0;
+    margin-bottom: 40px;
+  }
   h1 {
     font-weight: 700;
     font-size: 72px;
     text-align: left;
     position: absolute;
+    @media (max-width: 950px) {
+      position: relative;
+      padding-left: 30px;
+      font-size: ${vars.f_title_mobile};
+    }
   }
   .title-multi-line {
     display: inline-block;
@@ -23,6 +33,12 @@ const Title = styled("div")`
       font-size: 72px;
       &:last-child {
         transform: translate3d(60px, 0, 0);
+        @media (max-width: 950px) {
+          transform: translate3d(0, 0, 0);
+        }
+      }
+      @media (max-width: 950px) {
+        font-size: ${vars.f_title_mobile};
       }
     }
   }

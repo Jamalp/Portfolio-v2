@@ -30,9 +30,14 @@ class Circle extends Component {
   }
 
   componentDidMount() {
-    this.circleEl = document.querySelectorAll("#navigation_circle_wrapper");
+    this.circleEl = document.querySelector("#navigation_circle_wrapper");
     this.addEvent();
-    // this.resize();
+  }
+
+  componentWillUnmount() {
+    document.removeEventListener("mousemove", e => {
+      this.magnetize(e);
+    });
   }
 
   addEvent() {
@@ -45,24 +50,22 @@ class Circle extends Component {
     let mX = e.pageX;
     let mY = e.pageY;
 
-    [].forEach.call(this.circleEl, item => {
-      const customDist = 100;
-      const centerX = item.offsetLeft + item.clientWidth / 2;
-      const centerY = item.offsetTop + item.clientHeight / 2;
+    const customDist = 100;
+    const centerX = this.circleEl.offsetLeft + this.circleEl.clientWidth / 2;
+    const centerY = this.circleEl.offsetTop + this.circleEl.clientHeight / 2;
 
-      let deltaX = Math.floor(centerX - mX) * -0.3;
-      let deltaY = Math.floor(centerY - mY) * -0.3;
+    let deltaX = Math.floor(centerX - mX) * -0.3;
+    let deltaY = Math.floor(centerY - mY) * -0.3;
 
-      let distance = this.calculateDistance(item, mX, mY);
+    let distance = this.calculateDistance(this.circleEl, mX, mY);
 
-      if (distance < customDist) {
-        TweenMax.to(item, 0.3, { y: deltaY, x: deltaX, scale: 1.1 });
-        item.classList.add("magnet");
-      } else {
-        TweenMax.to(item, 0.45, { y: 0, x: 0, scale: 1 });
-        item.classList.remove("magnet");
-      }
-    });
+    if (distance < customDist) {
+      TweenMax.to(this.circleEl, 0.3, { y: deltaY, x: deltaX, scale: 1.1 });
+      this.circleEl.classList.add("magnet");
+    } else {
+      TweenMax.to(this.circleEl, 0.45, { y: 0, x: 0, scale: 1 });
+      this.circleEl.classList.remove("magnet");
+    }
   }
 
   calculateDistance(elem, mouseX, mouseY) {
@@ -72,11 +75,6 @@ class Circle extends Component {
           Math.pow(mouseY - (elem.offsetTop + elem.clientHeight / 2), 2)
       )
     );
-  }
-
-  events() {
-    window.addEventListener("resize", this.resize);
-    document.addEventListener("mousemove", this.mouseMove);
   }
 
   render() {
