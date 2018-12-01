@@ -16,7 +16,7 @@ const FooterEl = styled("footer")`
   @media (max-width: 950px) {
     width: 100%;
     margin: 30px auto 0;
-    padding-top: 30px;
+    padding-top: 27px;
     height: auto;
     flex-direction: column-reverse;
   }
@@ -73,12 +73,12 @@ const FooterEl = styled("footer")`
     p {
       font-weight: 700;
       font-size: 64px;
+      line-height: 1;
       letter-spacing: 1px;
       overflow: hidden;
       position: relative;
       @media (max-width: 950px) {
         font-size: 36px;
-        line-height: 1;
       }
       &:after {
         content: "";
@@ -109,10 +109,10 @@ const FooterEl = styled("footer")`
     justify-content: center;
     flex-direction: column;
     width: 22.75%;
-    padding-bottom: 30px;
+    padding-left: 30px;
     @media (max-width: 950px) {
       width: 100%;
-      padding: 0 30px 30px;
+      padding: 0 30px 20px;
       margin: 0 auto;
       align-items: flex-start;
     }

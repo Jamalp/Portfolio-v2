@@ -12,7 +12,7 @@ const Initials = styled("h4")`
   font-weight: 700;
   text-align: center;
   cursor: pointer;
-  @media (max-width: 950px) {
+  @media (max-width: 1024px) {
     display: none;
     bottom: 22px;
     right: 30px;

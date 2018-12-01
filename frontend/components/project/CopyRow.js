@@ -8,12 +8,14 @@ const CopyRowWrapper = styled("div")`
   margin-bottom: 94px;
   margin-left: calc(120px + 9.5%);
   width: calc(100% - 9.5% - 240px);
+  @media (max-width: 1024px) {
+    flex-direction: column-reverse;
+  }
   @media (max-width: 950px) {
     width: 100%;
     padding: 0 30px;
     margin-bottom: ${vars.mobile_margin_down};
     margin-left: 0;
-    flex-direction: column-reverse;
   }
 `;
 
@@ -21,9 +23,11 @@ const CopyRowEl = styled("div")`
   display: flex;
   justify-content: space-between;
   width: 74.3879%;
+  @media (max-width: 1024px) {
+    width: 100%;
+  }
   @media (max-width: 950px) {
     display: block;
-    width: 100%;
   }
   & > div {
     width: 48%;
@@ -46,10 +50,8 @@ const CopyRowEl = styled("div")`
 const ProjectMeta = styled("div")`
   text-align: right;
   color: #fff;
-  @media (max-width: 950px) {
+  @media (max-width: 1024px) {
     margin-bottom: ${vars.mobile_margin_down};
-  }
-  @media (max-width: 950px) {
     text-align: left;
   }
   & > div:first-child {

@@ -13,11 +13,13 @@ const QuoteEl = styled("div")`
   blockquote {
     font-size: 48px;
     margin: 0;
-    width: 66.807432432%;
+    width: 62.807432%;
     margin-bottom: 15px;
+    @media (max-width: 1024px) {
+      font-size: 36px;
+    }
     @media (max-width: 950px) {
       width: 100%;
-      font-size: 36px;
     }
   }
   blockquote,

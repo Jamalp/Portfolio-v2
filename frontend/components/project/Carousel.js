@@ -9,6 +9,9 @@ const CarouselElWrapper = styled("div")`
   justify-content: space-between;
   width: calc(100% - 240px);
   margin: 100px 120px 0;
+  @media (max-width: 1024px) {
+    flex-direction: column;
+  }
   @media (max-width: 950px) {
     width: 100%;
     margin: 40px 0 0;
@@ -23,12 +26,15 @@ const CarouselEl = styled("div")`
   @media (max-width: 1549px) {
     height: 500px;
   }
-  @media (max-width: 767px) {
-    height: 180px;
+  @media (max-width: 1024px) {
+    width: 100%;
   }
   @media (max-width: 950px) {
     width: 100%;
     margin-bottom: 20px;
+  }
+  @media (max-width: 767px) {
+    height: 180px;
   }
   .carousel-controls {
     position: absolute;
@@ -106,12 +112,23 @@ const CarouselEl = styled("div")`
 `;
 const CarouselSidebar = styled("div")`
   width: 20.25%;
+  @media (max-width: 1024px) {
+    margin-left: 12.5%;
+    margin-top: 28px;
+    width: calc(100% - 12.5%);
+  }
   @media (max-width: 950px) {
     width: 100%;
+    margin-left: 0;
+    margin-top: 28px;
   }
   p {
     font-size: 18px;
+    line-height: 24px;
     margin-bottom: 22px;
+    @media (max-width: 1024px) {
+      margin-bottom: 0;
+    }
   }
 `;
 class Carousel extends Component {
@@ -194,7 +211,13 @@ class Carousel extends Component {
         if (item.gallery_video) {
           return (
             <div className="carousel-item" key={`carousel-item-${index}`}>
-              <video className="carousel-item-media" autoPlay muted loop>
+              <video
+                className="carousel-item-media"
+                autoPlay
+                muted
+                loop
+                playsInline
+              >
                 <source src={item.gallery_video} type="video/mp4" />
               </video>
             </div>
@@ -213,14 +236,14 @@ class Carousel extends Component {
       return (
         <CarouselElWrapper>
           <CarouselEl>
-            <div
+            {/* <div
               className="carousel-controls prev"
               onClick={this.goBackward.bind(this)}
             />
             <div
               className="carousel-controls next"
               onClick={this.goForward.bind(this)}
-            />
+            /> */}
             <div className="carousel">{galleryItems}</div>
           </CarouselEl>
           <CarouselSidebar>

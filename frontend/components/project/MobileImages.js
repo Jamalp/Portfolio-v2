@@ -10,6 +10,9 @@ const MobileImagesWrapper = styled("div")`
   margin-left: calc(120px + 9.5%);
   margin-right: auto;
   margin-top: 100px;
+  @media (max-width: 1024px) {
+    width: calc(100% - 240px - 9.5%);
+  }
   @media (max-width: 950px) {
     width: 100%;
     margin-left: 0;

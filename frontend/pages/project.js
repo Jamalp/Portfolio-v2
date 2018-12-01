@@ -34,6 +34,9 @@ const HeroImage = styled("div")`
   @media (max-width: 1549px) {
     max-height: 650px;
   }
+  @media (max-width: 1024px) {
+    margin-bottom: 56px;
+  }
 
   img {
     height: 100%;
